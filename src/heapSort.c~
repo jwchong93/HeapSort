@@ -8,7 +8,7 @@ void heap (int arrayList[],int size,int currentLocation)
 	parentIndex = getParent(currentLocation);
 	leftChildIndex = getLeftChild(currentLocation);
 	rightChildIndex = getRightChild(currentLocation);
-	if(currentLocation<size-1)
+	if(currentLocation<size)
 	{
 		if(arrayList[currentLocation]<arrayList[rightChildIndex]&&rightChildIndex<size)
 		{
@@ -16,7 +16,7 @@ void heap (int arrayList[],int size,int currentLocation)
 			arrayList[currentLocation]=arrayList[rightChildIndex];
 			arrayList[rightChildIndex]=temp;
 		}
-		if(rightChildIndex<size-1)
+		if(rightChildIndex<size)
 		{
 			heap(arrayList,size,rightChildIndex);
 		}
@@ -26,7 +26,7 @@ void heap (int arrayList[],int size,int currentLocation)
 			arrayList[currentLocation]=arrayList[leftChildIndex];
 			arrayList[leftChildIndex]=temp;
 		}
-		if(leftChildIndex<size-1)
+		if(leftChildIndex<size)
 		{
 			heap(arrayList,size,leftChildIndex);
 		}
