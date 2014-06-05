@@ -1,6 +1,26 @@
+
+
 #include "heapSort.h"
 #include <stdio.h>
 
+void heapAscending (int arrayList[],int size,int currentLocation)
+{
+	int temp;
+	//heapSort (arrayList,size,currentLocation);
+	for(;currentLocation<size;size--)
+	{
+		heapSort (arrayList,size,currentLocation);
+		temp = arrayList[currentLocation];
+		arrayList[currentLocation]= arrayList[size-1];
+		arrayList[size-1] = temp;
+		
+	}
+}
+void heapSort (int arrayList[],int size,int currentLocation)
+{
+	heap (arrayList,size,currentLocation);
+	heap (arrayList,size,currentLocation);
+}
 void heap (int arrayList[],int size,int currentLocation)
 {
 	int temp;
@@ -8,7 +28,7 @@ void heap (int arrayList[],int size,int currentLocation)
 	parentIndex = getParent(currentLocation);
 	leftChildIndex = getLeftChild(currentLocation);
 	rightChildIndex = getRightChild(currentLocation);
-	if(currentLocation<size-1)
+	if(currentLocation<size)
 	{
 		if(arrayList[currentLocation]<arrayList[rightChildIndex]&&rightChildIndex<size)
 		{
@@ -16,20 +36,16 @@ void heap (int arrayList[],int size,int currentLocation)
 			arrayList[currentLocation]=arrayList[rightChildIndex];
 			arrayList[rightChildIndex]=temp;
 		}
-		if(rightChildIndex<size-1)
-		{
 			heap(arrayList,size,rightChildIndex);
-		}
 		if(arrayList[currentLocation]<arrayList[leftChildIndex]&&leftChildIndex<size)
 		{ 
 			temp=arrayList[currentLocation];
 			arrayList[currentLocation]=arrayList[leftChildIndex];
 			arrayList[leftChildIndex]=temp;
 		}
-		if(leftChildIndex<size-1)
-		{
+
+
 			heap(arrayList,size,leftChildIndex);
-		}
 		
 		if(currentLocation!=0)
 		{
@@ -40,8 +56,8 @@ void heap (int arrayList[],int size,int currentLocation)
 				arrayList[parentIndex]=temp;
 			}
 		}
-			
-		heap(arrayList,size,currentLocation);
+		
+		
 		
 	}
 	
